@@ -16,7 +16,7 @@ async function build(){
         outDir          : 'dist/assets',     
         //outFile       : 'index.html',   
         publicUrl       : '/assets',      
-        watch           : false,              
+        watch           : true,              
         cache           : true,               
         cacheDir        : '.cache',        
         minify          : false,             
@@ -26,7 +26,7 @@ async function build(){
         hmrPort         : 0,                
         sourceMaps      : false,         
         hmrHostname     : '',           
-        detailedReport  : true,
+        detailedReport  : false,
         custom          : {
             njkContext  : {
                 version : (new Date()).getTime()
@@ -40,7 +40,7 @@ async function build(){
 
         exec('mv ./dist/assets/*.html  ./dist/', (error, stdout, stderr) => {
           if (error) {
-            console.error(`exec error: ${error}`);
+            //console.error(`exec error: ${error}`);
             return;
           }
         })
@@ -66,7 +66,6 @@ function start(bundler){
     app.listen(Number(process.env.PORT || 3000))
     console.log('listening on port 3000'); 
 }
-
 
 
 build();
